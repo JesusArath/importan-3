@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100% !important;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: black;
+}
+
+
+/*Diseño de Alertas*/
+
+.alertify-notifier .ajs-message.ajs-error {
+    background: rgba(187, 57, 57, 0.967) !important;
+    text-align: center;
+    color: white !important;
+}
+
+
+/*Diseño de navbar*/
+
+mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+}
+
+@media screen and (max-width: 600px) {
+    mat-sidenav {
+        width: 80%;
+    }
+}
+
+mat-sidenav-container {
+    background-color: white;
+    color: rgb(0, 0, 0);
+}
+
+mat-icon {
+    cursor: pointer;
+}

@@ -1,0 +1,162 @@
+.chubbamarillo {
+    color: #fcb414;
+    opacity: 80%;
+}
+
+.container-fluid {
+    width: 97%;
+}
+
+.toolbar {
+    background-color: black !important;
+}
+
+.active {
+    background-color: #fcb414;
+    color: black !important;
+}
+
+.active>.nav-link {
+    color: black !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+    height: 70%;
+}
+
+.bordeAmarillo {
+    border: 1px solid;
+    border-radius: 15px;
+    font-family: Roboto;
+}
+
+.bordeAmarillo:hover {
+    border-color: #fcb414 !important;
+    border: 1px solid;
+    border-radius: 15px;
+}
+
+@media screen and (max-width: 600px) {
+    .bordeAmarillo {
+        margin-top: 15px;
+    }
+}
+
+
+/* Div con imagen */
+
+.imaagenconFondo {
+    background-image: url("../../../assets/photo-1513530534585-c7b1394c6d51.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 500px;
+}
+
+.divconColor {
+    background-color: #fcb414;
+    opacity: 85%;
+    height: 80%;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding-top: 35px;
+}
+
+.tituloColor {
+    color: white;
+    font-size: 4.2rem;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    /* font-family: 'Roboto'; */
+}
+
+.tituloProyecto {
+    font-size: 2.2rem;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    /* font-family: 'Roboto'; */
+}
+
+
+/* Div Gris */
+
+.divGris {
+    background-color: #d6d6d6 !important;
+    height: 100px;
+}
+
+
+/* div Proyecto */
+
+.divProyecto {
+    height: 550px;
+    background-image: url("../../../assets/diseno3.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.divGrisClaro {
+    background-color: #f2f2f2;
+}
+
+.divAmrailloTitulo {
+    font-family: Roboto;
+}
+
+.tituloProyecto2 {
+    font-size: 3.2rem;
+    font-family: Roboto;
+    font-weight: 700;
+    color: #2e2e44;
+    text-shadow: 2px 2px 2px white;
+}
+
+.textoAboutus {
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 1px #1c1c31;
+    color: #d6d6d6;
+    font-family: Roboto;
+}
+
+.botonDiseño {
+    text-decoration: none;
+    padding: 12px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 8px;
+    border-left: 3px solid rgb(255, 255, 255);
+    background-color: #2e2e44;
+    color: white;
+    letter-spacing: 10px;
+}
+
+.botonDiseño:hover {
+    transition: 1s;
+    /* border-left: 10px solid rgb(255, 255, 255); */
+    color: white;
+    background-color: #1c1c31;
+    -webkit-box-shadow: 13px 11px 0px 3px rgba(209, 207, 209, 1);
+    -moz-box-shadow: 13px 11px 0px 3px rgba(209, 207, 209, 1);
+    box-shadow: 13px 11px 0px 3px rgba(209, 207, 209, 1);
+}
+
+
+/* Imagen */
+
+.divBlanco {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
+    background-color: transparent !important;
+    width: 33% !important;
+}
+
+
+/* Div Footer */
+
+.divFooter {
+    background-color: black;
+    height: 300px;
+}

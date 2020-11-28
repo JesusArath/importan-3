@@ -1,0 +1,230 @@
+.chubbamarillo {
+    color: #fcb414;
+    opacity: 80%;
+}
+
+.container-fluid {
+    width: 97%;
+}
+
+.toolbar {
+    background-color: black !important;
+}
+
+.active {
+    background-color: #fcb414;
+    color: black !important;
+}
+
+.active>.nav-link {
+    color: black !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+    height: 70%;
+}
+
+.bordeAmarillo {
+    border: 1px solid;
+    border-radius: 15px;
+    font-family: Roboto;
+}
+
+.bordeAmarillo:hover {
+    border-color: #fcb414 !important;
+    border: 1px solid;
+    border-radius: 15px;
+}
+
+@media screen and (max-width: 600px) {
+    .bordeAmarillo {
+        margin-top: 15px;
+    }
+}
+
+
+/* Div con imagen */
+
+.imaagenconFondo {
+    /* background-image: url("../../assets/fondoregistro.jpg"); */
+    background-repeat: no-repeat;
+    /* background-repeat: repeat-y; */
+    background-position: center;
+    background-size: cover;
+    height: 500px;
+}
+
+.divconColor {
+    background-color: #fcb414;
+    opacity: 85%;
+    height: 60%;
+    border-radius: 50px;
+    padding-top: 20px;
+}
+
+.tituloColor {
+    color: white;
+    font-size: 1.2rem;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    /* font-family: 'Roboto'; */
+}
+
+.tituloProyecto {
+    font-size: 4.2rem;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    /* font-family: 'Roboto'; */
+}
+
+
+/* Div Gris */
+
+.divGris {
+    background-color: #d6d6d6 !important;
+    height: 100px;
+}
+
+
+/* div Formulario  */
+
+.divFormulario {
+    background-color: #cc9112;
+    padding-top: 10px;
+}
+
+.divConFondoOlas {
+    background-image: url("../../assets/fondoRegistro8.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 800px;
+    opacity: 90%;
+    overflow: hidden;
+    padding-top: 5%;
+    padding-bottom: 15%;
+}
+
+
+/* div Blanco Carta - Registro */
+
+.divCartBlanca {
+    background-color: rgba(255, 255, 255, 0.44);
+    height: 630px;
+}
+
+.tituloFormulario {
+    height: 75px;
+    border-top-right-radius: 20px;
+    background-color: white;
+    margin-left: -10px;
+    font-family: Roboto;
+    font-size: 1.9rem;
+    color: #cc9112;
+    font-weight: 700;
+    text-shadow: 3px 3px 3px #2e2e44;
+    letter-spacing: 5px;
+}
+
+.divAngularMaterial {
+    margin-left: -10px;
+}
+
+.fondoAzul {
+    background-color: #1c1c31 !important;
+    border-top-right-radius: 20px;
+    color: white;
+}
+
+.colorSelect {
+    background-color: rgba(255, 255, 255, 0.46);
+    padding-bottom: 0;
+}
+
+.botonSiguiente {
+    text-decoration: none;
+    padding: 12px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    border-radius: 8px;
+    border-left: 3px solid rgb(255, 255, 255);
+    background-color: #fcb414;
+    color: white;
+}
+
+.botonSiguiente:hover {
+    transition: 1s;
+    /* border-left: 10px solid rgb(255, 255, 255); */
+    color: white;
+    background-color: #cc9112;
+    -webkit-box-shadow: 13px 11px 0px 3px rgba(209, 207, 209, 1);
+    -moz-box-shadow: 13px 11px 0px 3px rgba(209, 207, 209, 1);
+    box-shadow: 13px 11px 0px 3px rgba(209, 207, 209, 1);
+}
+
+
+/* div Proyecto */
+
+.divProyecto {
+    height: 550px;
+    background-image: url("../../assets/diseno3.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.divGrisClaro {
+    background-color: #f2f2f2;
+}
+
+.divAmrailloTitulo {
+    font-family: Roboto;
+}
+
+.tituloProyecto2 {
+    font-size: 3.2rem;
+    font-family: Roboto;
+}
+
+.botonDiseño {
+    text-decoration: none;
+    padding: 12px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    border-radius: 8px;
+    border-left: 3px solid rgb(255, 255, 255);
+    background-color: #2e2e44;
+    color: white;
+}
+
+.botonDiseño:hover {
+    transition: 1s;
+    /* border-left: 10px solid rgb(255, 255, 255); */
+    color: white;
+    background-color: #1c1c31;
+    -webkit-box-shadow: 13px 11px 0px 3px rgba(209, 207, 209, 1);
+    -moz-box-shadow: 13px 11px 0px 3px rgba(209, 207, 209, 1);
+    box-shadow: 13px 11px 0px 3px rgba(209, 207, 209, 1);
+}
+
+
+/* Imagen */
+
+.divBlanco {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
+    background-color: transparent !important;
+    width: 33% !important;
+}
+
+
+/* Div Footer */
+
+.divFooter {
+    background-color: black;
+    height: 300px;
+}
