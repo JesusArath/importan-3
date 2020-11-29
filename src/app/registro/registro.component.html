@@ -36,6 +36,7 @@
                                 <div class="col-8 pt-4 pl-3  tituloFormulario">
                                     IMPORTAN-3
                                 </div>
+                                <!-------------------------------------------- Div donde se encuentran los pasos------------------------------- -->
                                 <mat-horizontal-stepper class="divAngularMaterial" labelPosition=" bottom " #stepper>
                                     <mat-step label="Dirección ">
                                         <div class="row fondoAzul " style="height: 400px;">
@@ -55,7 +56,7 @@
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
-                                                        <label class="input-group-text" for="inputGroupSelect01">Estado</label>
+                                                        <label class="input-group-text" for="inputGroupSelect01">Area Metropolitana</label>
                                                     </div>
                                                     <select class="custom-select" (change)="hola(i)" [(ngModel)]="estadoEscogido" id="inputGroupSelect01">
                                                         
@@ -80,11 +81,36 @@
                                             </div>
                                         </div>
                                     </mat-step>
-                                    <mat-step>
-                                        hola
+                                    <mat-step label="Cobertura">
+                                        <div class="row fondoAzul " style="height: 400px;">
+                                            <div class="col pl-3 pr-3">
+                                                <div class="row mb-3 mt-5">
+                                                    <div class="col-12">
+                                                        <h1>Coberturas</h1>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <button class="botonSiguiente botonCovertura1 ml-5 mr-5" [ngStyle]="botonCoverturaColor(0)" (click)="tipodeCovertura(0)" mat-button>Cobertura Limitada</button>
+                                                    <button class=" botonSiguiente botonCovertura2 ml-5 mr-5 mt-4 " [ngStyle]="botonCoverturaColor(1)" (click)="tipodeCovertura(1)" mat-button>Cobertura Amplia</button>
+                                                    <button class="botonSiguiente ml-5 mr-5 mt-4 " [ngStyle]="botonCoverturaColor(2)" (click)="tipodeCovertura(2)" mat-button>Cobertura Premium</button>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-7 " style="background-color: white; ">
+                                                <div class="row ml-5 mt-5 text-dark tituloCobertura">
+                                                    {{tipoDeCobertura}}
+                                                </div>
+                                                <div class="row ml-5 mt-4 text-dark">
+                                                    {{descripcion}}
+                                                </div>
+                                            </div>
+
+                                        </div>
                                     </mat-step>
-                                    <mat-step>
-                                        amigos
+                                    <mat-step style="height: 500px; background-color: blue; ">
+                                        <div style="height: 900px; background-color: aqua; ">
+
+                                        </div>
                                     </mat-step>
                                 </mat-horizontal-stepper>
                             </div>

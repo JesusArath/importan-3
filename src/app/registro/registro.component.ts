@@ -21,11 +21,49 @@ export class RegistroComponent implements OnInit {
     // this.Municipio
     this.municipiosMostrar = municipios.filter(municipio => municipio.estado == this.estadoEscogido)
     console.log(this.municipiosMostrar)
+    alert("hola")
+  }
+
+  Cobertura: any = [1,1,1];
+  CoberturaSeleccionada: any;
   
+  tipodeCovertura(i){
+    if(i == 0){
+      //Covertura Limitada  
+      this.Cobertura = [1,0,0]
+      this.tipoDeCobertura = "Cobertura Limitada"
+      this.descripcion = "Se cubre el robo de cualquiera de los tres objetos a elegir que se encuentren dentro de la lista";
+    }
+    if(i==1){
+      //Covertura Amplia
+      this.Cobertura = [0,1,0]
+      this.tipoDeCobertura = "Cobertura Amplia"
+      this.descripcion = "Cubre robo de cualquiera de los tres objetos elegidos además de gastos médicos derivados del asalto";
+    }
+    if(i==2){
+      // Covertura Premium
+      this.Cobertura = [0,0,1]
+      this.tipoDeCobertura = "Cobertura Premium"
+      this.descripcion = "Cubre robo de objetos personales sin restricciones, bajo las mismas condiciones que la cobertura amplia, incluyendo la cobertura de gastos médicos derivados del asalto.";
+    }
+    this.CoberturaSeleccionada = i
+  } //Obtiene el tipo de Covertura y modifica el estilo en la siguiente funcion
+  
+  botonCoverturaColor(i) {
+    if(this.Cobertura[i]==0){
+      const cambioColor = {
+        "background-color": "white",
+        "color": "black"
+      }
+      return cambioColor
+    }
   }
 
   estadoEscogido: any;
   municipiosMostrar: any = [];
+  descripcion: any;
+  tipoDeCobertura: any = "";
+
   
   Riesgo=['Alto', 'Medio', 'Bajo']
   Estado=['CDMX','Guadalajara ', 'Monterrey', 'Puebla', 'Queretaro'];

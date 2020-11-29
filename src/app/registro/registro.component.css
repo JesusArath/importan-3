@@ -96,7 +96,7 @@
     background-image: url("../../assets/fondoRegistro8.png");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 800px;
+    height: 1300px;
     opacity: 90%;
     overflow: hidden;
     padding-top: 5%;
@@ -154,7 +154,6 @@
 }
 
 .botonSiguiente:hover {
-    transition: 1s;
     /* border-left: 10px solid rgb(255, 255, 255); */
     color: white;
     background-color: #cc9112;
@@ -220,6 +219,16 @@
     background-color: transparent !important;
     width: 33% !important;
 }
+
+
+/* Tipo Cobertura */
+
+.tituloCobertura {
+    font-size: 3.2rem;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.textoCobertura {}
 
 
 /* Div Footer */
