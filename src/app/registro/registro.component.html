@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12 toolbar">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark toolbar">
-                <a class="navbar-brand chubbamarillo" href="#">ITAM</a>
+                <a class="navbar-brand chubbamarillo" href="#">IMPORTAN-3</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -103,13 +103,79 @@
                                                 <div class="row ml-5 mt-4 text-dark">
                                                     {{descripcion}}
                                                 </div>
+                                                <div class="row mr-5 ml-5 mt-5">
+                                                    <div class="col-12 ">
+                                                        <button class="botonContinuar" mat-button matStepperNext [hidden]="botonContinuar">Continuar</button>
+
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
                                     </mat-step>
-                                    <mat-step style="height: 500px; background-color: blue; ">
-                                        <div style="height: 900px; background-color: aqua; ">
-
+                                    <mat-step label="Objetos">
+                                        <div class="row fondoAzul justify-content-center" style="height: 400px;">
+                                            <div class="col-5" style="background-color: rgba(255, 255, 255, 0.993); color: black;">
+                                                <div class="row mt-5 mb-5 ml-2">
+                                                    <div class="col-10">
+                                                        <img src="../../assets/fotoObjetos.png" class="img-fluid rounded" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-7">
+                                                <div class="row ml-5 mt-4 mb-4 tituloObjetos">
+                                                    Objetos
+                                                </div>
+                                                <hr>
+                                                <div class="row mr-5 ml-5 textoObjetos">
+                                                    <div class="col-6">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="defaultCheck1" [disabled]="selectObjetos[1]" (click)="selectSeleccionado(1)" [(ngModel)]="valorObjetos[1]">
+                                                            <label class="form-check-label" for="defaultCheck1">
+                                                              Celular
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="defaultCheck2" [disabled]="selectObjetos[0]" [(ngModel)]="valorObjetos[0]" (click)="selectSeleccionado(0)">
+                                                            <label class="form-check-label" for="defaultCheck2">
+                                                              Bicicleta
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="defaultCheck3" [disabled]="selectObjetos[2]" [(ngModel)]="valorObjetos[2]" (click)="selectSeleccionado(2)">
+                                                            <label class="form-check-label" for="defaultCheck3">
+                                                              Equipo electrónico
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck4" [disabled]="selectObjetos[3]" [(ngModel)]="valorObjetos[3]" (click)="selectSeleccionado(3)">
+                                                            <label class="form-check-label" for="defaultCheck4">
+                                                              Electrodomestico 
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck5" [disabled]="selectObjetos[4]" [(ngModel)]="valorObjetos[4]" (click)="selectSeleccionado(4)">
+                                                            <label class="form-check-label" for="defaultCheck5">
+                                                              Joyas
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck6" [disabled]="selectObjetos[5]" [(ngModel)]="valorObjetos[5]" (click)="selectSeleccionado(5)">
+                                                            <label class="form-check-label" for="defaultCheck6">
+                                                              Mobiliario
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-center mt-5 mr-5 ml-5">
+                                                    <div class="col-12">
+                                                        <!-- <a class="botonSiguiente" (click)="hola()">Siguiente</a> -->
+                                                        <button class="botonSiguiente" mat-button matStepperNext>Finalizar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </mat-step>
                                 </mat-horizontal-stepper>

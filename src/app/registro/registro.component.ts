@@ -21,50 +21,17 @@ export class RegistroComponent implements OnInit {
     // this.Municipio
     this.municipiosMostrar = municipios.filter(municipio => municipio.estado == this.estadoEscogido)
     console.log(this.municipiosMostrar)
-    alert("hola")
   }
 
   Cobertura: any = [1,1,1];
   CoberturaSeleccionada: any;
-  
-  tipodeCovertura(i){
-    if(i == 0){
-      //Covertura Limitada  
-      this.Cobertura = [1,0,0]
-      this.tipoDeCobertura = "Cobertura Limitada"
-      this.descripcion = "Se cubre el robo de cualquiera de los tres objetos a elegir que se encuentren dentro de la lista";
-    }
-    if(i==1){
-      //Covertura Amplia
-      this.Cobertura = [0,1,0]
-      this.tipoDeCobertura = "Cobertura Amplia"
-      this.descripcion = "Cubre robo de cualquiera de los tres objetos elegidos además de gastos médicos derivados del asalto";
-    }
-    if(i==2){
-      // Covertura Premium
-      this.Cobertura = [0,0,1]
-      this.tipoDeCobertura = "Cobertura Premium"
-      this.descripcion = "Cubre robo de objetos personales sin restricciones, bajo las mismas condiciones que la cobertura amplia, incluyendo la cobertura de gastos médicos derivados del asalto.";
-    }
-    this.CoberturaSeleccionada = i
-  } //Obtiene el tipo de Covertura y modifica el estilo en la siguiente funcion
-  
-  botonCoverturaColor(i) {
-    if(this.Cobertura[i]==0){
-      const cambioColor = {
-        "background-color": "white",
-        "color": "black"
-      }
-      return cambioColor
-    }
-  }
+  botonContinuar= true ;
 
   estadoEscogido: any;
   municipiosMostrar: any = [];
   descripcion: any;
   tipoDeCobertura: any = "";
 
-  
   Riesgo=['Alto', 'Medio', 'Bajo']
   Estado=['CDMX','Guadalajara ', 'Monterrey', 'Puebla', 'Queretaro'];
   Municipio: any =[
@@ -220,6 +187,132 @@ export class RegistroComponent implements OnInit {
 
   ]
   
+  //Datos de Primas --> Excel
+
+        //   Los objetos son: 
+                  // - Celular
+                  // -Bicicleta
+                  // -Equipo electronico
+                  // -Electrodomestico
+                  // -Joyas
+                  // -Mobiliario
+
+
+    // Factores de Riesgo por Estado
+            
+  FactorDeRiesgoCDMX: any = [1.025 , 0.965 , 0.736];
+  FactorDeRiesgoGDL: any = [1.230 ,	0.673 ,	0.238];
+  FactorDeRiesgoMTY: any = [1.918 ,	1.031 ,	0.395];
+  FactorDeRiesgoPue: any = [1.133 ,	0.794 , 0];
+  FactorDeRiesgoQRO: any = [1.185 , 0.009 , 0];
+
+  MargenDeContribucion = 27;
+  GastosOperativos = 7;
+  GastosAdquisicion = 15;
+  MargenDeUtilidad = 5;
+  FactorDeducible = 10;
+  Inflacion = 4;
+  Gastos = 15;
+
+  // Bases Tecnicas y Financieras
+    // BTF [ESTADO][BICICLETA , CELULAR , ELECTRODOMESTICO, ELECTRONICO, JOYAS, MOBILIARIO , GASTOS MEDICOS , GENERAL]
+
+  BTF= [[
+    16.55 , 3.69 , 0.48 , 96.65 , 27.2 , 28.14 , 28.14 , 10.54 , 592.513259893921
+  ],[
+    6.61 , 7.12 , 21.57 , 186.36 , 257.16 , 54.26 , 54.26 , 17.1 , 1142.5422483468
+  ],[
+    11.09 , 11.95 , 36.19 , 312.62 , 38.24 , 91.02 , 91.02 , 28.68 , 1916.61089866157
+  ],[
+    24.92 , 7.18 , 20.76 , 66.45 , 22.96 , 54.65 , 54.65 , 6.85 , 1150.74750830565
+  ],[
+    5.25 , 5.65 , 17.12 , 106.51 , 18.09 , 43.05 , 43.05 , 3.04 , 906.593406593406
+  ]] 
+
+  //Estas funciones son para habilitar o deshabilitar los select de los objetos
+
+  selectObjetos: any = [false, false, false, false, false, false]
+
+  //Valores que brindaran la palomita dentro del select
+  valorObjetos: any = [false, false, false, false, false, false]
+
+  objetosSeleccionados: any = []
+
+  //Funciones
+  
+  tipodeCovertura(i){
+    if(i == 0){
+      //Covertura Limitada  
+      this.Cobertura = [1,0,0]
+      this.tipoDeCobertura = "Cobertura Limitada"
+      this.descripcion = "Se cubre el robo de cualquiera de los tres objetos a elegir que se encuentren dentro de la lista";
+    }
+    if(i==1){
+      //Covertura Amplia
+      this.Cobertura = [0,1,0]
+      this.tipoDeCobertura = "Cobertura Amplia"
+      this.descripcion = "Cubre robo de cualquiera de los tres objetos elegidos además de gastos médicos derivados del asalto";
+    }
+    if(i==2){
+      // Covertura Premium
+      this.Cobertura = [0,0,1]
+      this.tipoDeCobertura = "Cobertura Premium"
+      this.descripcion = "Cubre robo de objetos personales sin restricciones, bajo las mismas condiciones que la cobertura amplia, incluyendo la cobertura de gastos médicos derivados del asalto.";
+    }
+    this.CoberturaSeleccionada = i
+    this.botonContinuar= false;
+  } //Obtiene el tipo de Covertura y modifica el estilo en la siguiente funcion
+  
+  botonCoverturaColor(i) {
+    if(this.Cobertura[i]==0){
+      const cambioColor = {
+        "background-color": "white",
+        "color": "black"
+      }
+      return cambioColor
+    }
+  }
+
+  selectSeleccionado(i){
+    const valorDelCheckBox = this.valorObjetos[i]
+
+    if(valorDelCheckBox == false){
+      this.agregarObjetos(i)
+    }else{
+      this.quitarObjetos(i)
+    }
+  
+    console.log(this.objetosSeleccionados);
+    
+    
+  }
+
+  agregarObjetos(i){
+    this.objetosSeleccionados.push(i)
+    if(this.objetosSeleccionados.length == 3){
+      for(let j=0; j<6; j++){
+        for(let m=0; m<3 ; m++){
+          if(j != this.objetosSeleccionados[m]){
+            this.selectObjetos[j] = !this.selectObjetos[j]
+          }
+        }
+      }
+    }
+  }
+  quitarObjetos(i){
+    this.selectObjetos = [false, false, false, false, false, false]
+    
+    const objetos = this.objetosSeleccionados.length;
+    for(let m=0; m<objetos; m++){
+      if(i == this.objetosSeleccionados[m]){
+        this.objetosSeleccionados.splice(m,1);
+      }
+    }
+  }
+
+ 
+  
+
  
   
   
