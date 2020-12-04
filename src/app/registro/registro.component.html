@@ -58,7 +58,7 @@
                                                     <div class="input-group-prepend">
                                                         <label class="input-group-text" for="inputGroupSelect01">Area Metropolitana</label>
                                                     </div>
-                                                    <select class="custom-select" (change)="hola(i)" [(ngModel)]="estadoEscogido" id="inputGroupSelect01">
+                                                    <select class="custom-select" (change)="hola()" [(ngModel)]="estadoEscogido" id="inputGroupSelect01">
                                                         
                                                         
                                                         <option *ngFor="let estado of Estado; let i = index" [value]="i">{{estado}}</option>
@@ -66,15 +66,14 @@
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
-                                                        <label class="input-group-text" for="inputGroupSelect01">Municipio</label>
+                                                        <label class="input-group-text" for="inputGroupSelect02">Municipio</label>
                                                     </div>
-                                                    <select class="custom-select" id="inputGroupSelect01">
+                                                    <select class="custom-select" id="inputGroupSelect02">
                                                         <option *ngFor="let municipio of municipiosMostrar; let i = index" [value]="i">{{municipio.municipio}}</option>
                                                     </select>
                                                 </div>
                                                 <div class="row justify-content-center">
                                                     <div class="col-12">
-                                                        <!-- <a class="botonSiguiente" (click)="hola()">Siguiente</a> -->
                                                         <button class="botonSiguiente" mat-button matStepperNext>Siguiente</button>
                                                     </div>
                                                 </div>
@@ -172,7 +171,7 @@
                                                 <div class="row justify-content-center mt-5 mr-5 ml-5">
                                                     <div class="col-12">
                                                         <!-- <a class="botonSiguiente" (click)="hola()">Siguiente</a> -->
-                                                        <button class="botonSiguiente" (click)="finalizar()" mat-button matStepperNext>Finalizar</button>
+                                                        <button class="botonSiguiente" mat-button matStepperNext>Finalizar</button>
                                                     </div>
                                                 </div>
                                             </div>

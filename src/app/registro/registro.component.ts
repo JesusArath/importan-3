@@ -11,7 +11,7 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() {
   }
-  hola(i){
+  hola(){
     // console.log(this.Municipio);
     console.log(this.estadoEscogido)
     //buscar los municipios del estado
@@ -240,7 +240,7 @@ export class RegistroComponent implements OnInit {
 
   //Funciones
   
-  tipodeCovertura(i){
+  tipodeCovertura(i: any){
     if(i == 0){
       //Covertura Limitada  
       this.Cobertura = [1,0,0]
@@ -269,7 +269,7 @@ export class RegistroComponent implements OnInit {
     this.botonContinuar= false;
   } //Obtiene el tipo de Covertura y modifica el estilo en la siguiente funcion
   
-  botonCoverturaColor(i) {
+  botonCoverturaColor(i: any) {
     if(this.Cobertura[i]==0){
       const cambioColor = {
         "background-color": "white",
@@ -279,7 +279,7 @@ export class RegistroComponent implements OnInit {
     }
   }
 
-  selectSeleccionado(i){
+  selectSeleccionado(i: any){
     const valorDelCheckBox = this.valorObjetos[i]
 
     if(valorDelCheckBox == false){
@@ -293,7 +293,7 @@ export class RegistroComponent implements OnInit {
     
   }
 
-  agregarObjetos(i){
+  agregarObjetos(i: any){
     this.objetosSeleccionados.push(i)
     if(this.objetosSeleccionados.length == 3){
       for(let j=0; j<6; j++){
@@ -305,7 +305,7 @@ export class RegistroComponent implements OnInit {
       }
     }
   }
-  quitarObjetos(i){
+  quitarObjetos(i: any){
     this.selectObjetos = [false, false, false, false, false, false]
     
     const objetos = this.objetosSeleccionados.length;
