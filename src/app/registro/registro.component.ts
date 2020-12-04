@@ -246,18 +246,24 @@ export class RegistroComponent implements OnInit {
       this.Cobertura = [1,0,0]
       this.tipoDeCobertura = "Cobertura Limitada"
       this.descripcion = "Se cubre el robo de cualquiera de los tres objetos a elegir que se encuentren dentro de la lista";
+      this.selectObjetos  = [false, false, false, false, false, false]
+      this.valorObjetos = [false, false, false, false, false, false]
     }
     if(i==1){
       //Covertura Amplia
       this.Cobertura = [0,1,0]
       this.tipoDeCobertura = "Cobertura Amplia"
       this.descripcion = "Cubre robo de cualquiera de los tres objetos elegidos además de gastos médicos derivados del asalto";
+      this.selectObjetos  = [false, false, false, false, false, false]
+      this.valorObjetos = [false, false, false, false, false, false]
     }
     if(i==2){
       // Covertura Premium
       this.Cobertura = [0,0,1]
       this.tipoDeCobertura = "Cobertura Premium"
       this.descripcion = "Cubre robo de objetos personales sin restricciones, bajo las mismas condiciones que la cobertura amplia, incluyendo la cobertura de gastos médicos derivados del asalto.";
+      this.selectObjetos  = [true, true, true, true, true, true]
+      this.valorObjetos = [true, true, true, true, true, true]
     }
     this.CoberturaSeleccionada = i
     this.botonContinuar= false;
@@ -309,6 +315,8 @@ export class RegistroComponent implements OnInit {
       }
     }
   }
+
+ 
 
  
   
