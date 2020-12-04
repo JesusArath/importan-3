@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RecaptchaModule } from 'ng-recaptcha';
 import {FormsModule} from '@angular/forms';
 //Angular Material
 import {MatToolbarModule,MatSidenavModule,
@@ -48,7 +47,6 @@ const AngularMaterialApi: any = [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    RecaptchaModule,
     FormsModule, 
     AngularMaterialApi
   ],
