@@ -26,31 +26,31 @@
             <div class="col-12 divFormulario ">
                 <div class="row ">
                     <div class="col-12 divConFondoOlas">
-                        <div class="row mb-5 ml-3">
+                        <div class="row mb-5 ml-md-3 imagenChubb">
                             <div class="col">
                                 <img src="../../assets/logo.png" style="height: 105%;" alt="">
                             </div>
                         </div>
-                        <div class="row justify-content-center">
-                            <div class="col-10 pl-0 divCartBlanca">
-                                <div class="col-8 pt-4 pl-3  tituloFormulario">
+                        <div class="row justify-content-center p-0">
+                            <div class="col-md-10 pl-md-0 divCartBlanca p-0">
+                                <div class="col-md-8 pt-4 pl-3 text-sm-center text-md-left  tituloFormulario">
                                     IMPORTAN-3
                                 </div>
                                 <!-------------------------------------------- Div donde se encuentran los pasos------------------------------- -->
                                 <mat-horizontal-stepper class="divAngularMaterial" labelPosition=" bottom " #stepper>
                                     <mat-step label="Dirección ">
-                                        <div class="row fondoAzul " style="height: 400px;">
-                                            <div class="col-5 " style="background-color: white;">
-                                                <div class="row mt-5 mb-5 ml-2">
-                                                    <div class="col-10">
+                                        <div class="row fondoAzul" style="height: 400px;">
+                                            <div class="d-none d-md-block col-md-5 col-12 ImgagenCelular p-0" style="background-color: white;">
+                                                <div class="row mt-sm-5 mb-sm-5 ml-sm-2">
+                                                    <div class="col-md-10">
                                                         <img src="../../assets/registroparte3.png" class="img-fluid rounded" alt="">
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- FORMULARIO PARTE 1 -->
-                                            <div class="col pl-5 pr-5 align-self-center">
+                                            <div class="col pl-md-5 pr-md-5 align-self-center">
                                                 <div class="row mb-3">
-                                                    <div class="col-6">
+                                                    <div class="col col-md-6">
                                                         <h1>Bienvenido</h1>
                                                     </div>
                                                 </div>
@@ -78,10 +78,17 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="d-block d-md-none col-md-5 col-12 ImgagenCelular p-0" style="background-color: white;">
+                                                <div class="row mt-sm-5 mb-sm-5 ml-sm-2">
+                                                    <div class="col-md-10">
+                                                        <img src="../../assets/registroparte3.png" class="img-fluid rounded" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </mat-step>
                                     <mat-step label="Cobertura">
-                                        <div class="row fondoAzul " style="height: 400px;">
+                                        <div class="row fondoAzul masFondoAzul " style="height: 400px;">
                                             <div class="col pl-3 pr-3">
                                                 <div class="row mb-3 mt-5">
                                                     <div class="col-12">
@@ -89,20 +96,20 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <button class="botonSiguiente botonCovertura1 ml-5 mr-5" [ngStyle]="botonCoverturaColor(0)" (click)="tipodeCovertura(0)" mat-button>Cobertura Limitada</button>
-                                                    <button class=" botonSiguiente botonCovertura2 ml-5 mr-5 mt-4 " [ngStyle]="botonCoverturaColor(1)" (click)="tipodeCovertura(1)" mat-button>Cobertura Amplia</button>
-                                                    <button class="botonSiguiente ml-5 mr-5 mt-4 " [ngStyle]="botonCoverturaColor(2)" (click)="tipodeCovertura(2)" mat-button>Cobertura Premium</button>
+                                                    <button class="botonSiguiente botonCovertura1 ml-1 mr-1 ml-md-5 mr-md-5" [ngStyle]="botonCoverturaColor(0)" (click)="tipodeCovertura(0)" mat-button>Cobertura Limitada</button>
+                                                    <button class=" botonSiguiente botonCovertura2 ml-1 mr-1 ml-md-5 mr-md-5 mt-md-4 " [ngStyle]="botonCoverturaColor(1)" (click)="tipodeCovertura(1)" mat-button>Cobertura Amplia</button>
+                                                    <button class="botonSiguiente mb-2 ml-md-5 ml-1 mr-1 mr-md-5 mt-md-4 " [ngStyle]="botonCoverturaColor(2)" (click)="tipodeCovertura(2)" mat-button>Cobertura Premium</button>
 
                                                 </div>
                                             </div>
-                                            <div class="col-7 " style="background-color: white; ">
-                                                <div class="row ml-5 mt-5 text-dark tituloCobertura">
+                                            <div class="col-md-7 " style="background-color: white; ">
+                                                <div class="row ml-2 ml-md-5 mt-5 text-dark tituloCobertura">
                                                     {{tipoDeCobertura}}
                                                 </div>
-                                                <div class="row ml-5 mt-4 text-dark">
+                                                <div class="row ml-2 mr-2 text-center text-md-left ml-md-5 mt-4 text-dark">
                                                     {{descripcion}}
                                                 </div>
-                                                <div class="row mr-5 ml-5 mt-5">
+                                                <div class="row  mr-md-5 ml-md-5 mt-5">
                                                     <div class="col-12 ">
                                                         <button class="botonContinuar" mat-button matStepperNext [hidden]="botonContinuar">Continuar</button>
 
@@ -114,20 +121,20 @@
                                     </mat-step>
                                     <mat-step label="Objetos">
                                         <div class="row fondoAzul justify-content-center" style="height: 400px;">
-                                            <div class="col-5" style="background-color: rgba(255, 255, 255, 0.993); color: black;">
+                                            <div class="col-12 col-md-5 d-none d-md-block" style="background-color: rgba(255, 255, 255, 0.993); color: black;">
                                                 <div class="row mt-5 mb-5 ml-2">
                                                     <div class="col-10">
                                                         <img src="../../assets/fotoObjetos.png" class="img-fluid rounded" alt="">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-7">
+                                            <div class="col-12 col-md-7">
                                                 <div class="row ml-5 mt-4 mb-4 tituloObjetos">
                                                     Objetos
                                                 </div>
                                                 <hr>
-                                                <div class="row mr-5 ml-5 textoObjetos">
-                                                    <div class="col-6">
+                                                <div class="row mr-1 ml-1 mr-md-5 ml-md-5 textoObjetos">
+                                                    <div class="col-12 col-md-6">
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox" id="defaultCheck1" [disabled]="selectObjetos[1]" (click)="selectSeleccionado(1)" [(ngModel)]="valorObjetos[1]">
                                                             <label class="form-check-label" for="defaultCheck1">
@@ -147,7 +154,7 @@
                                                             </label>
                                                         </div>
                                                     </div>
-                                                    <div class="col-6">
+                                                    <div class="col-12 col-md-6">
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox" value="" id="defaultCheck4" [disabled]="selectObjetos[3]" [(ngModel)]="valorObjetos[3]" (click)="selectSeleccionado(3)">
                                                             <label class="form-check-label" for="defaultCheck4">
@@ -168,10 +175,17 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row justify-content-center mt-5 mr-5 ml-5">
+                                                <div class="row justify-content-center mb-4 mt-5 mr-md-5 ml-md-5">
                                                     <div class="col-12">
                                                         <!-- <a class="botonSiguiente" (click)="hola()">Siguiente</a> -->
                                                         <button class="botonSiguiente" mat-button matStepperNext>Finalizar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-5 d-block d-md-none" style="background-color: rgba(255, 255, 255, 0.993); color: black;">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <img src="../../assets/fotoObjetos.png" class="img-fluid rounded" alt="">
                                                     </div>
                                                 </div>
                                             </div>

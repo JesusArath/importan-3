@@ -96,7 +96,7 @@
     background-image: url("../../assets/fondoRegistro8.png");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 1300px;
+    height: 1000px;
     opacity: 90%;
     overflow: hidden;
     padding-top: 5%;
@@ -259,4 +259,30 @@
 .divFooter {
     background-color: black;
     height: 300px;
+}
+
+@media (max-width: 600px) {
+    .divCartBlanca {
+        height: 700px;
+    }
+    .tituloFormulario {
+        margin-left: 0%;
+        width: 90%;
+        font-size: 1.5rem;
+    }
+    .fondoAzul {
+        height: 640px !important;
+    }
+    .masFondoAzul {
+        height: 750px !important;
+    }
+    .ImgagenCelular {
+        height: 200px
+    }
+    .tituloCobertura {
+        font-size: 1.8rem;
+    }
+    .imagenChubb {
+        margin-bottom: 90px!important;
+    }
 }

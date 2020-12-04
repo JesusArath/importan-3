@@ -105,9 +105,9 @@
 .tituloProyecto2 {
     font-size: 3.2rem;
     font-family: Roboto;
-    font-weight: 700;
+    font-weight: 600;
     color: #2e2e44;
-    text-shadow: 2px 2px 2px white;
+    text-shadow: 1px 1px 1px white;
 }
 
 .textoAboutus {
