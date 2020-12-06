@@ -316,6 +316,10 @@ export class RegistroComponent implements OnInit {
     }
   }
 
+  finalizar(){
+  }
+
+ 
  
 
  
