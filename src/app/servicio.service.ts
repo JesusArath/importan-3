@@ -9,7 +9,8 @@ export class ServicioService {
   constructor(private http: HttpClient,) { 
   }
 
-  Url = "http://localhost:3000/"
+  // Url = "http://localhost:3000/"
+  Url = "https://importan-3back.azurewebsites.net/"
   headers = new HttpHeaders();
 
   obtenerPdf(i){
