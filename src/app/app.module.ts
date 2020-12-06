@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 //Angular Material
 import {MatToolbarModule,MatSidenavModule,
@@ -48,7 +49,8 @@ const AngularMaterialApi: any = [
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule, 
-    AngularMaterialApi
+    AngularMaterialApi,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

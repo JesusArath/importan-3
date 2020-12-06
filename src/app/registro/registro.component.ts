@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { from } from 'rxjs';
+import {ServicioService} from "../servicio.service";
 
 @Component({
   selector: 'app-registro',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor() { }
+  constructor(public servicio: ServicioService) { }
 
   ngOnInit() {
   }
@@ -317,6 +319,15 @@ export class RegistroComponent implements OnInit {
   }
 
   finalizar(){
+    const i = 123;
+    this.servicio.obtenerPdf(i).subscribe(
+      res => {
+        console.log(res)
+      }, 
+      err =>{
+
+      }
+    );
   }
 
  
