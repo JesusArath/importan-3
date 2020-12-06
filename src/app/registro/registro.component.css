@@ -265,6 +265,9 @@
     .divCartBlanca {
         height: 700px;
     }
+    .divConFondoOlas {
+        height: 1150px;
+    }
     .tituloFormulario {
         margin-left: 0%;
         width: 90%;
@@ -274,7 +277,7 @@
         height: 640px !important;
     }
     .masFondoAzul {
-        height: 750px !important;
+        height: 885px !important;
     }
     .ImgagenCelular {
         height: 200px

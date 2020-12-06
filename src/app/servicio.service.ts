@@ -10,10 +10,12 @@ export class ServicioService {
   }
 
   Url = "http://localhost:3000/"
+  headers = new HttpHeaders();
 
   obtenerPdf(i){
     const hola = {prima: 152}
-    return this.http.post(this.Url, hola)
+    const headers = this.headers.set('Accept', 'application/pdf');
+    return this.http.post(this.Url, hola, {headers: headers, responseType: 'blob'})
   }
 
 }
