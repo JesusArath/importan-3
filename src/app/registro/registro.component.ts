@@ -288,7 +288,7 @@ export class RegistroComponent implements OnInit {
     this.botonContinuar= false;
 
   } //Obtiene el tipo de Covertura y modifica el estilo en la siguiente funcion
-  escogerCobertura(i){
+  escogerCobertura(){
     this.coberturaFiltro = this.cobertura
   }
   
