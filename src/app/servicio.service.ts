@@ -10,7 +10,7 @@ export class ServicioService {
   }
 
   // Url = "http://localhost:3000/"
-  Url = "https://importan-3back.azurewebsites.net/"
+  Url = "https://importan-3back2.azurewebsites.net/"
   headers = new HttpHeaders();
 
   obtenerPdf(i){
