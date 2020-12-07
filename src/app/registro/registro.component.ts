@@ -321,6 +321,7 @@ export class RegistroComponent implements OnInit {
 
   finalizar(){
     const i = 123;
+    console.log("finalizar()")
     this.servicio.obtenerPdf(i).subscribe(
       res => {
         saveAs(res, "importan-3")
