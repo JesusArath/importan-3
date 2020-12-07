@@ -62,20 +62,20 @@
                                                     <select class="custom-select" (change)="hola()" [(ngModel)]="estadoEscogido" id="inputGroupSelect01">
                                                         
                                                         
-                                                        <option *ngFor="let estado of Estado; let i = index" [value]="i">{{estado}}</option>
+                                                        <option *ngFor="let estado of Estado; let i = index"  [value]="i">{{estado}}</option>
                                                     </select>
                                                 </div>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <label class="input-group-text" for="inputGroupSelect02">Municipio</label>
                                                     </div>
-                                                    <select class="custom-select" id="inputGroupSelect02">
-                                                        <option *ngFor="let municipio of municipiosMostrar; let i = index" [value]="i">{{municipio.municipio}}</option>
+                                                    <select class="custom-select" id="inputGroupSelect02" [(ngModel)]="municipioEscogido">
+                                                        <option *ngFor="let municipio of municipiosMostrar; let i = index" [value]="municipio">{{municipio.municipio}}</option>
                                                     </select>
                                                 </div>
                                                 <div class="row justify-content-center">
                                                     <div class="col-12">
-                                                        <button class="botonSiguiente" mat-button matStepperNext>Siguiente</button>
+                                                        <button class="botonSiguiente" (click)="escogerMunicipio()" mat-button matStepperNext>Siguiente</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -112,7 +112,7 @@
                                                 </div>
                                                 <div class="row  mr-md-5 ml-md-5 mt-5">
                                                     <div class="col-12 ">
-                                                        <button class="botonContinuar" mat-button matStepperNext [hidden]="botonContinuar">Continuar</button>
+                                                        <button class="botonContinuar" (click)="escogerCobertura()" mat-button matStepperNext [hidden]="botonContinuar">Continuar</button>
 
                                                     </div>
                                                 </div>

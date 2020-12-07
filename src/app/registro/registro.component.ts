@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { from } from 'rxjs';
 import {ServicioService} from "../servicio.service";
 import {saveAs} from 'file-saver'
+import alertify from 'alertifyjs'
 
 @Component({
   selector: 'app-registro',
@@ -31,6 +32,7 @@ export class RegistroComponent implements OnInit {
   botonContinuar= true ;
 
   estadoEscogido: any;
+  municipioEscogido: any;
   municipiosMostrar: any = [];
   descripcion: any;
   tipoDeCobertura: any = "";
@@ -240,10 +242,19 @@ export class RegistroComponent implements OnInit {
   valorObjetos: any = [false, false, false, false, false, false]
 
   objetosSeleccionados: any = []
+  
+  cobertura : any = 5;
+  coberturaFiltro : any = 5;
 
   //Funciones
-  
+
+  municipio: any = 3000;
+
+  escogerMunicipio(){
+    this.municipio = this.municipioEscogido;
+  }
   tipodeCovertura(i: any){
+    this.objetosSeleccionados= []
     if(i == 0){
       //Covertura Limitada  
       this.Cobertura = [1,0,0]
@@ -251,6 +262,7 @@ export class RegistroComponent implements OnInit {
       this.descripcion = "Cubre el robo de tres artículos elegidos de la lista de objetos personales IMPORTAN-3, siempre que ocurran dentro de su domicilio. La suma asegurada es el valor real acumulado de los tres bienes y existe un deducible de $4,500.00 por evento a cargo del asegurado. "
       this.selectObjetos  = [false, false, false, false, false, false]
       this.valorObjetos = [false, false, false, false, false, false]
+      this.cobertura = 0
     }
     if(i==1){
       //Covertura Amplia
@@ -259,6 +271,8 @@ export class RegistroComponent implements OnInit {
       this.descripcion = "Cubre el robo de tres artículos elegidos de la lista de objetos personales IMPORTAN-3, agregando la cobertura de gastos médicos en caso de que sea necesario incurrir en gastos en salud a consecuencia del asalto. La suma asegurada es el valor real acumulado de los tres objetos y al igual que la cobertura limitada, el deducible es de $4,500.00. La suma asegurada de gastos médicos es de $20,000.00 y no tiene deducible. "
       this.selectObjetos  = [false, false, false, false, false, false]
       this.valorObjetos = [false, false, false, false, false, false]
+      this.cobertura = 1
+
     }
     if(i==2){
       // Covertura Premium
@@ -267,10 +281,16 @@ export class RegistroComponent implements OnInit {
       this.descripcion = " La compañía conviene cubrir las pérdidas o daños materiales por el robo de cualquier objeto previamente señalado en la solicitud, sin necesidad de que estén dentro de la lista IMPORTAN-3. También están amparados los gastos médicos que pudiera ocasionar el siniestro. Para esta cobertura, existe una suma asegurada máxima de $100,000.00 y el deducible de robo permanece en $4,500.00"
       this.selectObjetos  = [true, true, true, true, true, true]
       this.valorObjetos = [true, true, true, true, true, true]
+      this.objetosSeleccionados = [0,1,2,3,4,5]
+      this.cobertura =2 
     }
     this.CoberturaSeleccionada = i
     this.botonContinuar= false;
+
   } //Obtiene el tipo de Covertura y modifica el estilo en la siguiente funcion
+  escogerCobertura(i){
+    this.coberturaFiltro = this.cobertura
+  }
   
   botonCoverturaColor(i: any) {
     if(this.Cobertura[i]==0){
@@ -320,16 +340,22 @@ export class RegistroComponent implements OnInit {
   }
 
   finalizar(){
-    const i = 123;
+    const i = 125;
     console.log("finalizar()")
-    this.servicio.obtenerPdf(i).subscribe(
-      res => {
-        saveAs(res, "importan-3")
-      }, 
-      err =>{
+    if(this.municipio != 3000 && this.coberturaFiltro != 5 && this.objetosSeleccionados.length>2){
+      alertify.success('Descargando');
+      this.servicio.obtenerPdf(i).subscribe(
+        res => {
+          saveAs(res, "importan-3")
+        }, 
+        err =>{
 
-      }
-    );
+        }
+      );
+    }else{
+      alertify.error('Verificar los valores'); 
+    }
+    
   }
 
  
