@@ -3,6 +3,7 @@ import { from } from 'rxjs';
 import {ServicioService} from "../servicio.service";
 import {saveAs} from 'file-saver'
 import alertify from 'alertifyjs'
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-registro',
@@ -32,7 +33,7 @@ export class RegistroComponent implements OnInit {
   botonContinuar= true ;
 
   estadoEscogido: any;
-  municipioEscogido: any;
+  municipioEscogido: any = [];
   municipiosMostrar: any = [];
   descripcion: any;
   tipoDeCobertura: any = "";
@@ -184,10 +185,10 @@ export class RegistroComponent implements OnInit {
 
     //Queretaro
 
-    {estado: 4,municipio: 'Queretaro',riesgo:0},
+    {estado: 4,municipio: 'Queretaro',riesgo:1},
     {estado: 4,municipio: 'Colón',riesgo:1},
     {estado: 4,municipio: 'Corregidora',riesgo:1},
-    {estado: 4,municipio: 'El Marqués',riesgo:0},
+    {estado: 4,municipio: 'El Marqués',riesgo:1},
     {estado: 4,municipio: 'Huimilpan',riesgo:1},
 
   ]
@@ -205,33 +206,38 @@ export class RegistroComponent implements OnInit {
 
     // Factores de Riesgo por Estado
             
-  FactorDeRiesgoCDMX: any = [1.025 , 0.965 , 0.736];
-  FactorDeRiesgoGDL: any = [1.230 ,	0.673 ,	0.238];
-  FactorDeRiesgoMTY: any = [1.918 ,	1.031 ,	0.395];
-  FactorDeRiesgoPue: any = [1.133 ,	0.794 , 0];
-  FactorDeRiesgoQRO: any = [1.185 , 0.009 , 0];
+ 
+  FactorDeRiesgo: any = [
+    [1.10050583563509 , 1.02408740844639 , 0.661230180752083], //Alto, Medio, Riesgo
+    [1.25886001839301 , 0.569433839965301 , 0.42346284270968],
+    [1.96166565711671 , 0.989388331052683 , 0.464365727489081],
+    [1.08688838689124 , 0.942058789253324 , 0],
+    [1.000 , 1.000  , 1.000]
+  ]
 
-  MargenDeContribucion = 27;
+  MargenDeContribucion = 47;
   GastosOperativos = 7;
-  GastosAdquisicion = 15;
+  GastosAdquisicion = 35;
   MargenDeUtilidad = 5;
-  FactorDeducible = 10;
+  FactorDeducible = 15;
   Inflacion = 4;
   Gastos = 15;
 
-  // Bases Tecnicas y Financieras
-    // BTF [ESTADO][BICICLETA , CELULAR , ELECTRODOMESTICO, ELECTRONICO, JOYAS, MOBILIARIO , GASTOS MEDICOS , GENERAL]
+  PrimaFinal: any = 0;
 
-  BTF= [[
-    16.55 , 3.69 , 0.48 , 96.65 , 27.2 , 28.14 , 28.14 , 10.54 , 592.513259893921
+  // Bases Tecnicas y Financieras
+    // Primas de Riesgo [ESTADO][BICICLETA , CELULAR , ELECTRODOMESTICO, ELECTRONICO, JOYAS, MOBILIARIO , GASTOS MEDICOS , GENERAL]
+
+  PrimasDeRiesgo= [[
+    16.55 , 3.69 , 11.19 , 96.65 , 27.2 , 27.2 , 28.14 , 10.54 , 701.45
   ],[
-    6.61 , 7.12 , 21.57 , 186.36 , 257.16 , 54.26 , 54.26 , 17.1 , 1142.5422483468
+    6.61 , 7.12 , 21.57 , 186.36 , 257.16 , 257.16 , 54.26 , 17.1 , 1350.87
   ],[
-    11.09 , 11.95 , 36.19 , 312.62 , 38.24 , 91.02 , 91.02 , 28.68 , 1916.61089866157
+    11.09 , 11.95 , 36.19 , 312.62 , 38.24 , 38.24 , 91.02 , 28.68 , 1998.07
   ],[
-    24.92 , 7.18 , 20.76 , 66.45 , 22.96 , 54.65 , 54.65 , 6.85 , 1150.74750830565
+    24.92 , 7.18 , 20.76 , 66.45 , 22.96 , 22.96 , 54.65 , 6.85 , 1235.53
   ],[
-    5.25 , 5.65 , 17.12 , 106.51 , 18.09 , 43.05 , 43.05 , 3.04 , 906.593406593406
+    5.25 , 5.65 , 17.12 , 106.51 , 18.09 , 18.09 , 43.05 , 3.04 , 995.75
   ]] 
 
   //Estas funciones son para habilitar o deshabilitar los select de los objetos
@@ -341,10 +347,31 @@ export class RegistroComponent implements OnInit {
 
   finalizar(){
     const i = 125;
-    console.log("finalizar()")
+  
     if(this.municipio != 3000 && this.coberturaFiltro != 5 && this.objetosSeleccionados.length>2){
+    //    Algoritmo para determinar la prima 
+      const municipioRiesgo= this.municipio;
+      switch (this.coberturaFiltro) {
+        case 0:
+          //     Cobertura Limitada
+          this.PrimaFinal = this.funcionCoberturaLimitada();
+          break;
+        case 1:
+          //     Cobertura Amplia
+          this.PrimaFinal = this.funcionCoberturaAmplia();
+          break;
+        case 2:
+          //     Cobertura Premium
+          this.PrimaFinal = this.funcionCoberturaPremium();
+          break;
+          
+        default:
+          break;
+      }
+      this.PrimaFinal = this.PrimaFinal.toFixed(4)
+
       alertify.success('Descargando');
-      this.servicio.obtenerPdf(i).subscribe(
+      this.servicio.obtenerPdf(this.PrimaFinal).subscribe(
         res => {
           saveAs(res, "importan-3")
         }, 
@@ -356,6 +383,51 @@ export class RegistroComponent implements OnInit {
       alertify.error('Verificar los valores'); 
     }
     
+  }
+
+  funcionCoberturaLimitada(){
+    let sumaPRM = 0;
+    const municipioRiesgo = this.municipio;
+    console.log(this.objetosSeleccionados);
+    
+    for(let i = 0 ; i<this.objetosSeleccionados.length; i++){
+      const precio = this.PrimasDeRiesgo[this.estadoEscogido][this.objetosSeleccionados[i]]
+      sumaPRM = sumaPRM + precio
+    }
+    const formula = sumaPRM * (1 + (this.Gastos/100)) * this.FactorDeRiesgo[this.estadoEscogido][municipioRiesgo] / (1 - (this.MargenDeContribucion/100))
+    // const formula = sumaPRM * this.FactorDeRiesgo[this.estadoEscogido][municipioRiesgo]
+    console.log(formula);
+    return formula;
+  }
+  funcionCoberturaAmplia(){
+    let sumaPRM = 0;
+    const municipioRiesgo = this.municipio;
+    console.log(this.objetosSeleccionados);
+    
+    for(let i = 0 ; i<this.objetosSeleccionados.length; i++){
+      const precio = this.PrimasDeRiesgo[this.estadoEscogido][this.objetosSeleccionados[i]]
+      sumaPRM = sumaPRM + precio
+    }
+    const formula = (sumaPRM + this.PrimasDeRiesgo[this.estadoEscogido][7])* (1 + (this.Gastos/100)) * this.FactorDeRiesgo[this.estadoEscogido][municipioRiesgo] / (1 - (this.MargenDeContribucion/100))
+    // const formula = sumaPRM * this.FactorDeRiesgo[this.estadoEscogido][municipioRiesgo]
+    console.log(formula);
+    return formula;
+
+  }
+  funcionCoberturaPremium(){
+    let sumaPRM = 0;
+    const municipioRiesgo = this.municipio;
+    console.log(this.objetosSeleccionados);
+    
+    // for(let i = 0 ; i<this.objetosSeleccionados.length; i++){
+    //   const precio = this.PrimasDeRiesgo[this.estadoEscogido][this.objetosSeleccionados[i]]
+    //   sumaPRM = sumaPRM + precio
+    // }
+    const formula = (this.PrimasDeRiesgo[this.estadoEscogido][8])* (1 + (this.Gastos/100)) * this.FactorDeRiesgo[this.estadoEscogido][municipioRiesgo] / (1 - (this.MargenDeContribucion/100))
+    // const formula = sumaPRM * this.FactorDeRiesgo[this.estadoEscogido][municipioRiesgo]
+    console.log(formula);
+    return formula;
+
   }
 
  

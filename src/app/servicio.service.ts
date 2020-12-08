@@ -14,7 +14,7 @@ export class ServicioService {
   headers = new HttpHeaders();
 
   obtenerPdf(i){
-    const hola = {prima: 152}
+    const hola = {prima: i}
     console.log("huevos")
     const headers = this.headers.set('Accept', 'application/pdf');
     return this.http.post(this.Url, hola, {headers: headers, responseType: 'blob'})
