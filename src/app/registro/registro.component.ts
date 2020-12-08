@@ -192,6 +192,7 @@ export class RegistroComponent implements OnInit {
     {estado: 4,municipio: 'Huimilpan',riesgo:1},
 
   ]
+  premiumMensaje= false;
   
   //Datos de Primas --> Excel
 
@@ -269,6 +270,7 @@ export class RegistroComponent implements OnInit {
       this.selectObjetos  = [false, false, false, false, false, false]
       this.valorObjetos = [false, false, false, false, false, false]
       this.cobertura = 0
+      this.premiumMensaje = false
     }
     if(i==1){
       //Covertura Amplia
@@ -278,6 +280,7 @@ export class RegistroComponent implements OnInit {
       this.selectObjetos  = [false, false, false, false, false, false]
       this.valorObjetos = [false, false, false, false, false, false]
       this.cobertura = 1
+      this.premiumMensaje = false
 
     }
     if(i==2){
@@ -289,6 +292,8 @@ export class RegistroComponent implements OnInit {
       this.valorObjetos = [true, true, true, true, true, true]
       this.objetosSeleccionados = [0,1,2,3,4,5]
       this.cobertura =2 
+      this.premiumMensaje = true
+
     }
     this.CoberturaSeleccionada = i
     this.botonContinuar= false;

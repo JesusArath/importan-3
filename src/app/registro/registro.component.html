@@ -176,7 +176,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row justify-content-center mb-4 mt-5 mr-md-5 ml-md-5">
+                                                <div class="row mt-2" *ngIf="premiumMensaje">
+                                                    <div class="col-12 text-center text-secondary">
+                                                        Este paquete cubre el robo de cualquier objeto
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-center mb-4 mt-3 mr-md-5 ml-md-5">
                                                     <div class="col-12">
                                                         <!-- <a class="botonSiguiente" (click)="hola()">Siguiente</a> -->
                                                         <button class="botonSiguiente" (click)="finalizar()" mat-button matStepperNext>Finalizar</button>
