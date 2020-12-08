@@ -373,7 +373,7 @@ export class RegistroComponent implements OnInit {
         default:
           break;
       }
-      this.PrimaFinal = this.PrimaFinal.toFixed(4)
+      this.PrimaFinal = this.PrimaFinal.toFixed(2)
 
       alertify.success('Descargando');
       this.servicio.obtenerPdf(this.PrimaFinal).subscribe(
