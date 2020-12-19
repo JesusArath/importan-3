@@ -374,16 +374,21 @@ export class RegistroComponent implements OnInit {
           break;
       }
       this.PrimaFinal = this.PrimaFinal.toFixed(2)
+      if(isNaN(this.PrimaFinal)){
+        alertify.error('Valor NaN'); 
+        // this.finalizar();
+      }else{
+        alertify.success('Descargando');
+        this.servicio.obtenerPdf(this.PrimaFinal).subscribe(
+          res => {
+            saveAs(res, "importan-3")
+          }, 
+          err =>{
 
-      alertify.success('Descargando');
-      this.servicio.obtenerPdf(this.PrimaFinal).subscribe(
-        res => {
-          saveAs(res, "importan-3")
-        }, 
-        err =>{
-
-        }
-      );
+          }
+        );
+      }
+      
     }else{
       alertify.error('Verificar los valores'); 
     }
